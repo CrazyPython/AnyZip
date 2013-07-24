@@ -1,6 +1,7 @@
 from PythonCard import model,timer
 from tkinter import Tk,tkFileDialog
 import os,re,platform
+alltypes =["lzma","bzip2","gzip"]
 try:
     platform.linux_distribution
 except:
@@ -45,34 +46,40 @@ def l():
             continue
 class Window(model.Background):
     def on_initialize(self):
+        self.components.format.items = list(set(alltypes) ^ set(unableto))
+        self.components.format.stringSelection = alltypes[0]
+    def actiondec(f):
+        @wraps(f)
+        def wrap(*args,**kwargs):
+          self.components.load.visible = True
+          try:
+              f(*args,*kwargs)
+          except:
+              try:f = open(self.components.url.text)
+              except OSerror:self.components.msg.text = 'Error, Not Found or Encrypted(needs password)'
+          self.components.load.visible = False
+    def on_initialize(self):
         self.myTimer = timer.Timer(self.components.load, -1) # create a timer
         self.myTimer.Start(100)
     def on_browse_mouseClick(self,event):
-        self.components.load.visible = True
         self.components.url.text = browse()
-        self.components.load.visible = False
     def on_browse2_mouseClick(self,event):
-        self.components.load.visible = True
         self.components.secondary.text = browse()
-        self.components.load.visible = False
     def on_extract_mouseClick(self,event):
-        self.components.load.visible = True
         f = self.components.url.text
         to = self.components.url.text
         if to.strip() == '':
             to = re.sub('.[a-z]|[A-Z]+','',f)
         z = zipfile.zip(f)
         if kind(f).startswith('archive-'):
-            z.extractall(path=to)
+            z.extractall(path=to,allowZip64=large)
         else:
-            z.extractall(f.strip(to),path=to)
+            z.extractall(f.strip(to),path=to,allowZip64=large)
         z.close()
-        self.components.load.visible = False
     def on_zip_mouseClick(self,event):
-        self.components.load.visible = True
-        
-        self.components.load.visible = False
+        zipfile.ZipFile(self.components.url.text,self.components.format.stringSelection)
     def on_run_mouseClick(self,event):
+        t = self.components.url.text.strip()
         if secondary.strip():
             os.system(t+' '+secondary)
         else:
