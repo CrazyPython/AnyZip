@@ -76,8 +76,8 @@ class Window(model.Background):
         else:
             z.extractall(f.strip(to),path=to,allowZip64=large)
         z.close()
-    def on_zip_mouseClick(self,event):
-        zipfile.ZipFile(self.components.url.text,self.components.format.stringSelection)
+    #def on_zip_mouseClick(self,event): # in construction
+        #zipfile.ZipFile(self.components.url.text,self.components.format.stringSelection)
     def on_run_mouseClick(self,event):
         t = self.components.url.text.strip()
         if secondary.strip():
