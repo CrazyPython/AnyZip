@@ -4,7 +4,7 @@
     {'type':'Background',
           'name':'bgTemplate',
           'title':u'AnyZip',
-          'size':(1616, 876),
+          'size':(401, 299),
 
         'menubar': {'type':'MenuBar',
          'menus': [
@@ -23,10 +23,51 @@
      },
          'components': [
 
+{'type':'Button', 
+    'name':'extractone', 
+    'position':(78, 26), 
+    'label':u'Extract one', 
+    },
+
+{'type':'Button', 
+    'name':'include', 
+    'position':(158, 26), 
+    'label':u'Add', 
+    },
+
+{'type':'Choice', 
+    'name':'format', 
+    'position':(73, 53), 
+    'size':(130, -1), 
+    'items':[u'Detecting...'], 
+    'stringSelection':u'Detecting...', 
+    },
+
+{'type':'StaticText', 
+    'name':'StaticText3', 
+    'position':(25, 58), 
+    'text':u'Format', 
+    'toolTip':u'Auto-detect/Ignore for opening', 
+    },
+
+{'type':'PasswordField', 
+    'name':'pw', 
+    'position':(72, 76), 
+    'size':(125, -1), 
+    },
+
+{'type':'StaticText', 
+    'name':'StaticText2', 
+    'position':(16, 70), 
+    'text':u'Password:', 
+    'toolTip':u'(for encrypted files only)', 
+    },
+
 {'type':'List', 
     'name':'filenamesdis', 
     'position':(3, 161), 
     'items':[], 
+    'toolTip':u'Used with extract one.', 
     },
 
 {'type':'Button', 
@@ -38,7 +79,7 @@
 {'type':'StaticText', 
     'name':'load', 
     'position':(353, 228), 
-    'size':(30, -1), 
+    'toolTip':u'Easter egg!', 
     'visible':False, 
     },
 
@@ -56,26 +97,28 @@
 
 {'type':'Button', 
     'name':'browse2', 
-    'position':(205, 116), 
+    'position':(205, 126), 
     'label':u'Browse...', 
+    'toolTip':u'If not found, DOES NOT SHOW ERROR MESSAGE,It does when you do the action.', 
     },
 
 {'type':'TextField', 
     'name':'secondary', 
-    'position':(71, 117), 
+    'position':(71, 127), 
     'size':(127, -1), 
     'toolTip':u'combine/compress from/depress to/run with args', 
     },
 
 {'type':'Button', 
     'name':'browse', 
-    'position':(204, 90), 
+    'position':(204, 101), 
     'label':u'Browse...', 
+    'toolTip':u'If not found, DOES NOT SHOW ERROR MESSAGE', 
     },
 
 {'type':'TextField', 
     'name':'url', 
-    'position':(70, 91), 
+    'position':(70, 101), 
     'size':(127, -1), 
     'toolTip':u'View, edit, delete, extract this', 
     },
@@ -102,8 +145,9 @@
 
 {'type':'StaticText', 
     'name':'msg', 
-    'position':(1, 228), 
+    'position':(0, 226), 
     'text':u'Ready', 
+    'toolTip':u"Easter egg:I'm ready ,I'm ready", 
     },
 
 {'type':'Button', 
