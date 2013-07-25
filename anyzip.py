@@ -72,9 +72,9 @@ class Window(model.Background):
             to = re.sub('.[a-z]|[A-Z]+','',f)
         z = zipfile.zip(f)
         if kind(f).startswith('archive-'):
-            z.extractall(path=to,allowZip64=large)
+            z.extractall(path=to,allowZip64=large,pwd=self.components.pw.text)
         else:
-            z.extractall(f.strip(to),path=to,allowZip64=large)
+            z.extractall(f.strip(to),path=to,allowZip64=large,pwd=self.components.pw.text)
         z.close()
     #def on_zip_mouseClick(self,event): # in construction
         #zipfile.ZipFile(self.components.url.text,self.components.format.stringSelection)
