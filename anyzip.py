@@ -1,6 +1,6 @@
 from PythonCard import model,timer
 from tkinter import Tk,tkFileDialog
-import os,re,platform
+import os,re,platform,zipfile
 alltypes =["lzma","bzip2","gzip"]
 try:
     platform.linux_distribution
@@ -84,6 +84,7 @@ class Window(model.Background):
             os.system(t+' '+secondary)
         else:
             os.system(t)
+    def on_extratone
     def on_url_losefocus(self,event):
         t = self.components.url.text.strip()
         if t == '':
@@ -103,7 +104,9 @@ class Window(model.Background):
             else:
                 self.components.edit.enabled = False
                 self.components.extract.enabled = True
-                self.components.filenamedis.items = zipfile.zip(self.components.url.text).namelist()
+                z = zipfile.ZipFile(self.components.url.text).namelist()
+                self.components.filenamedis.items = z
+
         elif kind(t) == 'folder':
             self.components.zip.enabled = True
         elif kind(t) == 'program':
